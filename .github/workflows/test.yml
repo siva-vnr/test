@@ -16,5 +16,7 @@ jobs:
           
       - name: Push changes to staging
         run: |
+          git config user.name "siva-vnr"
+          git config user.email "siva@superbotics.in"
           git checkout -B staging
           git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force
