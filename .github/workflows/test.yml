@@ -1,4 +1,4 @@
-name: Sync Staging  Branch
+name: Sync Staging Branch
 on:
   push:
     branches:
@@ -11,12 +11,14 @@ jobs:
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v3
+        with:
+          ref: main
           
       - name: Push changes to staging
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git config user.name "siva-vnr"
-          git config user.email "siva@superbotics.in"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B staging
           git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force
