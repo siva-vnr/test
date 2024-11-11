@@ -22,4 +22,3 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B staging
           git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force
-          git status
