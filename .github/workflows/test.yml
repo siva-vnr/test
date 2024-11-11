@@ -1,0 +1,22 @@
+name: Sync Staging  Branch
+on:
+  push:
+    branches:
+      - main  # Runs whenever there's a commit to the main branch
+
+jobs:  
+  sync-staging:    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main  # Change this to the main branch of your repo if different 
+          
+      - name: Push changes to staging
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B staging
+          git push origin staging --force 
