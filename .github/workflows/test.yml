@@ -17,4 +17,4 @@ jobs:
       - name: Push changes to staging
         run: |
           git checkout -B staging
-          git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force 
+          git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force
