@@ -4,23 +4,25 @@ on:
     branches:
       - main  # Runs whenever there's a commit to the main branch
 
-jobs:
-  sync-staging:
+jobs:  
+  sync-staging:    
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v3
         with:
           ref: main
-
+          
       - name: Push changes to staging
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B staging
-          git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/IT-JONCTION/swap-bob-etc staging --force
-
+          git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force
+          
       - name: Send Slack Notification
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
