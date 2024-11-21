@@ -27,4 +27,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text": "Staging branch has been updated successfully."}' $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data '{"text": "Staging branch has been updated successfully. please send your pr to staging"}' $SLACK_WEBHOOK_URL
