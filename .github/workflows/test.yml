@@ -22,9 +22,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B staging
           git push https://x-access-token:${PAT_TOKEN}@github.com/siva-vnr/test.git staging --force
-          
+
       - name: Send Slack Notification
         env:
-          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Staging branch has been updated successfully."}' $SLACK_WEBHOOK_URL
